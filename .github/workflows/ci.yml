@@ -18,7 +18,7 @@ jobs:
 
       - name: install deps
         run: |
-          sudo apt update && apt install -y make llvm-dev libclang-dev clang pkg-config unzip curl default-jdk build-essential
+          sudo apt update && sudo apt install -y make llvm-dev libclang-dev clang pkg-config unzip curl default-jdk build-essential
       - name: build
         run: |
           export ANDROID_HOME=/tmp/Android/sdk
