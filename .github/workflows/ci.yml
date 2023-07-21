@@ -9,7 +9,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
         with:
-          submodules: recursive
+          submodules: true
 
       - name: install rust toolchain
         uses: hecrj/setup-rust-action@v1
@@ -18,13 +18,12 @@ jobs:
 
       - name: install deps
         run: |
-          sudo apt-get update && sudo apt-get install -y unzip curl default-jdk gcc build-essential
-
+          cargo install cbindgen
+          apt update && apt install -y make llvm-dev libclang-dev clang pkg-config unzip curl default-jdk build-essential
       - name: build
         run: |
-          # export RUSTFLAGS="-Z strip=symbols"
           export ANDROID_HOME=/tmp/Android/sdk
-          export NDK_HOME=/tmp/Android/sdk/ndk-bundle
+          export NDK_HOME=/tmp/Android/sdk/ndk/25.2.9519653
           export PATH=$ANDROID_HOME/cmdline-tools/bin:$PATH
           export PATH=~/.cargo/bin:$PATH
           WD=`pwd`
@@ -35,7 +34,7 @@ jobs:
           mkdir -p $ANDROID_HOME
           mv cmdline-tools $ANDROID_HOME
           yes | sdkmanager --sdk_root=$ANDROID_HOME --licenses
-          sdkmanager --sdk_root=$ANDROID_HOME "ndk-bundle" "platforms;android-21"
+          sdkmanager --sdk_root=$ANDROID_HOME "ndk;25.2.9519653" "platforms;android-21"
           cd $WD
           # add targets
           rustup target add aarch64-linux-android x86_64-linux-android i686-linux-android armv7-linux-androideabi
@@ -45,33 +44,33 @@ jobs:
 
       - name: copy artifacts
         run: |
-          cp app/src/main/rust/leaf-android/target/x86_64-linux-android/release/libleafandroid.so libleafandroid-x86_64-linux-android.so
-          cp app/src/main/rust/leaf-android/target/aarch64-linux-android/release/libleafandroid.so libleafandroid-aarch64-linux-android.so
-          cp app/src/main/rust/leaf-android/target/armv7-linux-androideabi/release/libleafandroid.so libleafandroid-armv7-linux-android.so
-          cp app/src/main/rust/leaf-android/target/i686-linux-android/release/libleafandroid.so libleafandroid-i686-linux-android.so
+          cp app/src/main/rust/leaf-android/target/x86_64-linux-android/release/libleaf.so libleaf-x86_64-linux-android.so
+          cp app/src/main/rust/leaf-android/target/aarch64-linux-android/release/libleaf.so libleaf-aarch64-linux-android.so
+          cp app/src/main/rust/leaf-android/target/armv7-linux-androideabi/release/libleaf.so libleaf-armv7-linux-android.so
+          cp app/src/main/rust/leaf-android/target/i686-linux-android/release/libleaf.so libleaf-i686-linux-android.so
 
       - name: upload assets
         uses: actions/upload-artifact@v2
         with:
-          name: libleafandroid-x86_64-linux-android.so
-          path: libleafandroid-x86_64-linux-android.so
+          name: libleaf-x86_64-linux-android.so
+          path: libleaf-x86_64-linux-android.so
 
       - name: upload assets
         uses: actions/upload-artifact@v2
         with:
-          name: libleafandroid-aarch64-linux-android.so
-          path: libleafandroid-aarch64-linux-android.so
+          name: libleaf-aarch64-linux-android.so
+          path: libleaf-aarch64-linux-android.so
 
       - name: upload assets
         uses: actions/upload-artifact@v2
         with:
-          name: libleafandroid-armv7-linux-android.so
-          path: libleafandroid-armv7-linux-android.so
+          name: libleaf-armv7-linux-android.so
+          path: libleaf-armv7-linux-android.so
           
 
       - name: upload assets
         uses: actions/upload-artifact@v2
         with:
-          name: libleafandroid-i686-linux-android.so
-          path: libleafandroid-i686-linux-android.so
+          name: libleaf-i686-linux-android.so
+          path: libleaf-i686-linux-android.so
           

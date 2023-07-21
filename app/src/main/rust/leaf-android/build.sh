@@ -24,7 +24,7 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 			mkdir -p "$BASE/../../jniLibs/x86_64/"
 			case $mode in
 				'release')
-					cargo build --target $target --release
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
 					cp "$BASE/target/$target/release/libleaf.so" "$BASE/../../jniLibs/x86_64/"
 					;;
 				*)
@@ -40,11 +40,11 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 			mkdir -p "$BASE/../../jniLibs/arm64-v8a/"
 			case $mode in
 				'release')
-					cargo build --target $target --release
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
 					cp "$BASE/target/$target/release/libleaf.so" "$BASE/../../jniLibs/arm64-v8a/"
 					;;
 				*)
-					cargo build --target $target
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring"
 					cp "$BASE/target/$target/debug/libleaf.so" "$BASE/../../jniLibs/arm64-v8a/"
 					;;
 			esac
@@ -56,11 +56,11 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 			mkdir -p "$BASE/../../jniLibs/armeabi-v7a/"
 			case $mode in
 				'release')
-					cargo build --target $target
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
 					cp "$BASE/target/$target/release/libleaf.so" "$BASE/../../jniLibs/armeabi-v7a/"
 					;;
 				*)
-					cargo build --target $target
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring"
 					cp "$BASE/target/$target/debug/libleaf.so" "$BASE/../../jniLibs/armeabi-v7a/"
 					;;
 			esac
