@@ -1,10 +1,10 @@
 #!/bin/bash
 
-mode=debug
-
-if [ "$1" = "release" ]; then
-	mode=release
-fi
+mode=release
+#
+#if [ "$1" = "release" ]; then
+#	mode=release
+#fi
 
 BASE=`dirname "$0"`
 HOST_OS=`uname -s | tr "[:upper:]" "[:lower:]"`
