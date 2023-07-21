@@ -6,13 +6,13 @@ use jni::{
 #[allow(non_snake_case)]
 #[no_mangle]
 pub unsafe extern "C" fn Java_com_noob_NoobVpnService_runLeaf(
-    env: JNIEnv,
+    mut env: JNIEnv,
     _: JClass,
     config_path: JString,
     _protect_path: JString,
 ) {
     let config_path = env
-        .get_string(config_path)
+        .get_string(config_path.as_ref())
         .unwrap()
         .to_str()
         .unwrap()
