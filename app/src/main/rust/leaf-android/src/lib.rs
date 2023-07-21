@@ -26,6 +26,7 @@ pub unsafe extern "C" fn Java_com_noob_NoobVpnService_runLeaf(
     let opts = leaf::StartOptions {
         config: leaf::Config::File(config_path),
         // socket_protect_path: Some(protect_path),
+        auto_reload: true,
         runtime_opt: leaf::RuntimeOption::MultiThreadAuto(2),
     };
     leaf::start(10086, opts).unwrap();
