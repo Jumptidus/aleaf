@@ -5,7 +5,7 @@ authors = ["ghost <noreply>"]
 edition = "2021"
 
 [lib]
-name = "leafandroid"
+name = "leaf"
 path = "src/lib.rs"
 crate-type = ["dylib"]
 
@@ -15,5 +15,5 @@ default = [
 ]
 
 [dependencies]
-leaf = { git = "https://github.com/eycorsican/leaf.git", package = "leaf", default-features = false }
+leaf = { git = "https://github.com/eycorsican/leaf.git", package = "leaf"}
 jni = { version = "0.21.1", default-features = false }
