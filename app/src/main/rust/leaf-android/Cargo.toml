@@ -2,18 +2,28 @@
 name = "leaf-android"
 version = "0.1.0"
 authors = ["ghost <noreply>"]
-edition = "2021"
+edition = "2018"
 
 [lib]
 name = "leaf"
 path = "src/lib.rs"
-crate-type = ["dylib"]
+crate-type = ["staticlib", "dylib"]
 
 [features]
 default = [
     "leaf/default-ring"
 ]
 
+default-ring = [
+    "leaf/default-ring"
+]
+
+default-openssl = [
+    "leaf/default-openssl"
+]
+
+auto-reload = ["leaf/auto-reload"]
+
 [dependencies]
-leaf = { git = "https://github.com/eycorsican/leaf.git", package = "leaf", default-features = false, optional = true}
+leaf = { git = "https://github.com/eycorsican/leaf.git", default-features = false, optional = true}
 jni = { version = "0.21.1", default-features = false }
