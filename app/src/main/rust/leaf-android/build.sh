@@ -1,5 +1,9 @@
 #!/bin/bash
 
+set -x
+
+name=leaf
+
 mode=release
 #
 #if [ "$1" = "release" ]; then

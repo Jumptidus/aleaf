@@ -25,5 +25,5 @@ default-openssl = [
 auto-reload = ["leaf/auto-reload"]
 
 [dependencies]
-leaf = { git = "https://github.com/eycorsican/leaf.git", default-features = false, optional = true}
+leaf = { git = "https://github.com/jumptidus/leaf_star.git", default-features = false, optional = true}
 jni = { version = "0.21.1", default-features = false }
