@@ -52,7 +52,7 @@ pub unsafe extern "C" fn Java_com_noob_NoobVpnService_runLeaf(
     let opts = leaf::StartOptions {
         config: leaf::Config::File(config_path.to_string()),
         #[cfg(feature = "auto-reload")]
-        auto_reload: false,
+        auto_reload: true,
         runtime_opt: leaf::RuntimeOption::SingleThread,
     };
     if let Err(e) = leaf::start(rt_id, opts) {

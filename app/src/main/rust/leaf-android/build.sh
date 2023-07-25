@@ -2,8 +2,6 @@
 
 set -x
 
-name=leaf
-
 mode=release
 #
 #if [ "$1" = "release" ]; then
@@ -32,7 +30,7 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 					cp "$BASE/target/$target/release/libleaf.so" "$BASE/../../jniLibs/x86_64/"
 					;;
 				*)
-					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring"
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
 					cp "$BASE/target/$target/debug/libleaf.so" "$BASE/../../jniLibs/x86_64/"
 					;;
 			esac
@@ -48,7 +46,7 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 					cp "$BASE/target/$target/release/libleaf.so" "$BASE/../../jniLibs/arm64-v8a/"
 					;;
 				*)
-					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring"
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
 					cp "$BASE/target/$target/debug/libleaf.so" "$BASE/../../jniLibs/arm64-v8a/"
 					;;
 			esac
@@ -64,7 +62,7 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 					cp "$BASE/target/$target/release/libleaf.so" "$BASE/../../jniLibs/armeabi-v7a/"
 					;;
 				*)
-					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring"
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
 					cp "$BASE/target/$target/debug/libleaf.so" "$BASE/../../jniLibs/armeabi-v7a/"
 					;;
 			esac
@@ -80,7 +78,7 @@ for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv
 					cp "$BASE/target/$target/release/libleaf.so" "$BASE/../../jniLibs/x86/"
 					;;
 				*)
-					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring"
+					cargo build --target $target --manifest-path "$BASE/Cargo.toml" --no-default-features --features "leaf/default-ring" --release
 					cp "$BASE/target/$target/debug/libleaf.so" "$BASE/../../jniLibs/x86/"
 					;;
 			esac
