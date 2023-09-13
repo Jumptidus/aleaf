@@ -37,7 +37,7 @@ fn to_errno(e: leaf::Error) -> i32 {
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_com_noob_NoobVpnService_runLeaf(
+pub unsafe extern "C" fn Java_com_star_StarVpnService_runLeaf(
     mut env: JNIEnv,
     _: JClass,
     rt_id: u16,
@@ -63,7 +63,7 @@ pub unsafe extern "C" fn Java_com_noob_NoobVpnService_runLeaf(
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_com_noob_NoobVpnService_stopLeaf(
+pub unsafe extern "C" fn Java_com_star_StarVpnService_stopLeaf(
     _: JNIEnv,
     _: JClass,
     rt_id: u16
@@ -74,7 +74,7 @@ pub unsafe extern "C" fn Java_com_noob_NoobVpnService_stopLeaf(
 
 #[allow(non_snake_case)]
 #[no_mangle]
-pub unsafe extern "C" fn Java_com_noob_NoobVpnService_reloadLeaf(
+pub unsafe extern "C" fn Java_com_star_StarVpnService_reloadLeaf(
     _: JNIEnv,
     _: JClass,
     rt_id: u16
