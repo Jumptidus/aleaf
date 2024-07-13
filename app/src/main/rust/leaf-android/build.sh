@@ -15,7 +15,7 @@ HOST_ARCH=$(uname -m | tr "[:upper:]" "[:lower:]")
 export PATH="$NDK_HOME/toolchains/llvm/prebuilt/$HOST_OS-$HOST_ARCH/bin/":$PATH
 
 android_tools="$NDK_HOME/toolchains/llvm/prebuilt/$HOST_OS-$HOST_ARCH/bin"
-api=31
+api=30
 
 for target in aarch64-linux-android x86_64-linux-android i686-linux-android armv7-linux-androideabi; do
 	case $target in
